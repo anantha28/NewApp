@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</link>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+         <meta http-equiv="refresh" content="3600">
+        <title>News APP</title>
+        <style>
+        body{
+          background: #f1f1f1;
+          font-family: Varela;
+          overflow-x: hidden;
+        }
+      .slider-size {
+  height: 450px; 
+}  
+
+.content{
+  position:absolute;
+  bottom:2px;
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 99.5%; 
+  height:20%;
+  padding: 0px;
+}
+.content1{
+  position:absolute;
+  bottom:2px;
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 98%; 
+  height:50%;
+  padding: 0px;
+}
+
+.content2{
+  position:absolute;
+  bottom:2px;
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 99%; 
+  height:30%;
+  padding: 0px;
+}
+
+.imgmerge:hover{
+  opacity:0.9;
+}
+.hhh:hover{
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+}
+
+.main:hover {
+  box-shadow: 0 0 5px 3px rgba(0, 140, 186, 0.3);
+  color:#1494b2;
+}
+.main:hover img{
+  opacity:0.8;
+}
+.main
+{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+  border-radius:30px;
+}
+.mainNew{
+  display:None;
+}
+.break:hover img{
+  opacity:0.9;
+}
+.break:hover p{
+      color: #000000;
+}
+
+.navbar { margin-bottom: 0px;}
+
+.slick-slider
+{
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+
+    height: auto;
+
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+
+@charset 'UTF-8';
+/* Slider */
+.slick-loading .slick-list
+{
+    background: #fff url('./ajax-loader.gif') center center no-repeat;
+}
+
+/* Icons */
+@font-face
+{
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('./fonts/slick.eot');
+    src: url('./fonts/slick.eot?#iefix') format('embedded-opentype'), url('./fonts/slick.woff') format('woff'), url('./fonts/slick.ttf') format('truetype'), url('./fonts/slick.svg#slick') format('svg');
+}
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before
+{
+    opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before
+{
+    opacity: .25;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev
+{
+    left: -25px;
+}
+[dir='rtl'] .slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.slick-prev:before
+{
+    content: '←';
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: '→';
+}
+
+.slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.slick-next:before
+{
+    content: '→';
+}
+[dir='rtl'] .slick-next:before
+{
+    content: '←';
+}
+
+/* Dots */
+.slick-dotted.slick-slider
+{
+    margin-bottom: 30px;
+}
+
+.slick-dots
+{
+    position: absolute;
+    bottom: -25px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}
+.slick-prev:before .slick-next:before { 
+    color:red !important;
+    content:'↓';
+}
+.quote{
+  max-width:200px;max-height:200px;margin-left:450px;border:2px solid black;display:None;
+}
+.categories-content{
+  display:None;
+}
+
+
+    </style>
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse" style="min-width:100%">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            <a href="/" class="navbar-brand">NewsApp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          
+            <li><a href="#">categories</a></li>
+            <li><a href="#">blogs</a></li>
+            <li><a href="#">about</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser){ %>
+            <li><a href="/login">LogIn <i class="fas fa-user"></i></a></li>
+            <li><a href="/register">SignUp <i class="fas fa-user-plus"></i></a></li>
+            <%} else{ %>
+            <li><a href="/profilenav"><%= currentUser.username %></a></li>
+            <li><a href="/logout">Log out</a></li>
+            <% } %>
+        </ul>
+        </div>
+    </nav>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js">
+    
+  </script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  
+  
+<% if(error.length>0){%>
+<div class="alert alert-danger container" style="margin-top:40px;"><%=error%></div>
+<% }if(success.length>0){%>
+<div class="alert alert-success container" style="margin-top:40px;"><%=success%></div>
+<% } %>
+  
+  
+  
+  
+  
+ 
+     <section class="carousel-fixed-height" style="max-width:100%;">
+    <div id="carousel-fixed-height" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-fixed-height" data-slide-to="0" class=""></li>
+        <li data-target="#carousel-fixed-height" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-fixed-height" data-slide-to="2" class="active"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- NOTE: Bootstrap v4 changes class name to carousel-item -->
+        <% trending.slice(1,3).forEach(function(t){ %>
+          <div class="item">
+          <!-- The only change from the original bootstrap carousel is the "item" divs. I am using this in a CMS so I use inline styles for the background divs so I can set the background image files within the loop.  Just easier for my purposes.  Change the img tag to a div as follows: -->
+          <!--<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/158072/woman-camera.jpg" alt="First slide">-->
+          <div style="background:url('<%= t.image1 %>') center center; background-size:cover;" class="slider-size">
+            <div class="carousel-caption">
+              <h3 style="color:#ff0000"><%= t.name %></h3>
+              <p>Uploaded:<%= moment(t.createdAt).fromNow() %></p>
+              <a href="/show/<%= t._id %>"<button class="btn btn-primary">Read full</button></a>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+        
+        <div class="item active">
+          <!--<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/158072/hearthand.jpg" alt="Third slide">-->
+          <div style="background:url('https://c1.staticflickr.com/5/4046/4288661296_5dbda2f42e_b.jpg') center center; background-size:cover;" class="slider-size">
+            <div class="carousel-caption">
+              <h3 style="color:#ffffff">Nature:If you truly love nature,you will find beauty everywhere</h3>
+              <a href="/show/nature"<button class="btn btn-primary">Nature Posts</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#carousel-fixed-height" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-fixed-height" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </section>
+  
+  
+<h3 style="margin-left:70px"><a href="/newspost/new">Latest News-></a></h3>
+<h3 style="margin-left:70px"><a href="/show/newspostid">show news</a></h3>
+<div class="row" style="display:flex; flex-wrap:wrap;margin:2px">
+  
+
+  <div class="col-lg-8 text-center">
+  <div class="container">
+    <% card.slice(0,9).forEach(function(post){ %>
+    <a href="/show/<%= post._id %>">
+  <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12 main" style="padding:0px;margin:40px;margin-top:5px;margin-botton:5px">
+    <div class="thumbnail" style="padding:0px;margin:0px;height:350px">
+    <img src="<%= post.image1 %>" style="width: 100%;height: 15vw;object-fit: cover;">
+    <div class="caption"  >
+      <h4 style="overflow-wrap: break-word;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= post.name %></h4>
+      <p style="overflow-wrap: break-word;"><%= moment(post.createdAt).fromNow() %></p>
+    </div>
+    </div>
+  </div>
+  </a>
+   <% }); %>
+  
+  
+    
+    <% card.slice(9,15).forEach(function(post){ %>
+    <a href="/show/<%= post._id %>">
+  <div class="col-lg-3 col-md-4 col-xs-12 col-sm-12 main mainNew" style="padding:0px;margin:40px;margin-top:5px;margin-botton:5px">
+    <div class="thumbnail" style="padding:0px;margin:0px;height:350px">
+    <img src="<%= post.image1 %>" style="width: 100%;height: 15vw;object-fit: cover;">
+    <div class="caption"  >
+      <h4 style="overflow-wrap: break-word;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= post.name %></h4>
+      <p style="overflow-wrap: break-word;"><%= moment(post.createdAt).fromNow() %></p>
+    </div>
+    </div>
+  </div>
+  </a>
+   <% }); %>
+   
+  <h2 class="btn btn-danger go">more>></h2>
+  </div>
+  
+  <div class="quote">
+    <h1 style="text-align:center;">Quote number 1</h1>
+    <h5 style="overflow-wrap: break-word;">sksjvkjsvkjsvsdbvsbvsbvsbvhbvjsbvsjhvbsjvbshjvbsvbsdbvsjvbsjbvsbvsdbvjsbvjvbsjbvjhsvbhvbjbvhjvbvhjvb</h5>
+  </div>
+  
+  </div>
+
+  
+  <div class="col-lg-3" style="margin-left:120px">
+    <div class="jumbotron" style="background:#ffffff">
+      <h3 style="text-align:center;margin-top:0px">Breaking News</h3>
+      <% breaking.forEach(function(breaks){ %>
+      <div class="break">
+      <a  style="=color:#000000;text-decoration:none;" href="/show/<%= breaks._id %>">
+          <img  style="max-width:25%;margin:5px;max-width:80px;min-width:80px;max-height:70px;min-height:70px" class="pull-left" src="<%= breaks.image1 %>">
+            <p style="font-size:18px;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;padding-top:10px"><%= breaks.name %></p>
+      </a>
+      <hr style="width:90%">
+      </div>
+      <% }); %>
+           
+    </div>
+    </div>
+  </div>
+  
+  
+  <div class="row" onscroll="fun()">
+    <div class="col-lg-9">
+    <div class="container">
+      
+      
+      <% collage.slice(0,1).forEach(function(col){ %>
+      <a href="/show/<%= col._id %>">
+        <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12 imgmerge" style="margin-left:30px;padding:0.5px">
+      <div class="thumbnail" style="padding:0px;margin:0px">
+        <img src="<%= col.image1 %>" style="min-height:314px;min-width:472px;max-height:314px;max-width:472px" >
+        <div class="content">
+           <h4 style="margin-left:8px;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= col.name %></h4>
+        </div>
+       
+      </div>
+      </div>
+      </a>
+      <% }); %>
+      
+      
+      
+      <% collage.slice(1,4).forEach(function(col1){ %>
+      <a href="/show/<%= col1._id %>">
+      <div class="col-lg-2 imgmerge" style="padding:0.5px">
+        <div class="thumbnail" style="padding:0px;margin:0px">
+        <img src="<%= col1.image1 %>" style="min-width:187px;min-height:125px;max-width:187px;max-height:125px" >
+        <div class="content1">
+           <h5 style="margin-left:3px;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= col1.name %></h5>
+        </div>
+       
+      </div>
+      </div>
+      
+      </a>
+      <% }) %>
+      
+      
+     <% collage.slice(4,6).forEach(function(col2){ %>
+      <a href="/show/<%= col2._id %>">
+      <div class="col-lg-3 imgmerge" style="padding:0.5px">
+        <div class="thumbnail" style="padding:0px;margin:0px">
+        <img src="<%= col2.image1 %>" style="min-width:282px;min-height:188px;max-width:282px;max-height:188px;" >
+        <div class="content2">
+           <h5 style="margin-left:3px;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= col2.name %></h5>
+        </div>
+      </div>
+      </div>
+      <% }) %>
+
+      <% collage.slice(6,7).forEach(function(col2){ %>
+      <a href="/show/<%= col2._id %>">
+      <div class="col-lg-5 col-md-5 col-xs-12 col-sm-12 imgmerge" style="margin-left:30px;padding:0.5px">
+      <div class="thumbnail" style="padding:0px;margin:0px">
+        <img src="<%= col2.image1 %>" style="min-height:314px;min-width:472px;max-height:314px;max-width:472px" >
+        <div class="content">
+           <h4 style="margin-left:8px;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= col2.name %></h4>
+        </div>
+       
+      </div>
+      </div>
+      </a>
+      
+      <% }) %>
+      
+      
+      <% collage.slice(7,9).forEach(function(col2){ %>
+      <a href="/show/<%= col2._id %>">
+      <div class="col-lg-3 imgmerge" style="padding:0.5px">
+        <div class="thumbnail" style="padding:0px;margin:0px">
+        <img src="<%= col2.image1 %>" style="min-width:282px;min-height:188px;max-width:282px;max-height:188px;" >
+        <div class="content2">
+           <h5 style="margin-left:3px;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= col2.name %></h5>
+        </div>
+      </div>
+      </div>
+      <% }) %>
+      
+      
+        <% collage.slice(9,12).forEach(function(col1){ %>
+      <a href="/show/<%= col1._id %>">
+      <div class="col-lg-2 imgmerge" style="padding:0.5px">
+        <div class="thumbnail" style="padding:0px;margin:0px">
+        <img src="<%= col1.image1 %>" style="min-width:187px;min-height:125px;max-width:187px;max-height:125px" >
+        <div class="content1">
+           <h5 style="margin-left:3px;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= col1.name %></h5>
+        </div>
+       
+      </div>
+      </div>
+      
+      </a>
+      <% }) %>
+      
+
+    </div> 
+     
+    
+  </div>
+  
+  <div class="col-lg-2" style="margin-left:30px;margin-top:0px">
+    <div class="jumbotron" style="background:#f1f1f1">
+           <div class="autoplay">
+  
+  <% rightcollage.slice(0,7).forEach(function(col2){ %>
+  
+  <a href="/show/<%= col2._id %>">
+  <div>
+    <img src="<%= col2.image1 %>" style="max-width:200px;max-height:120px;min-width:200px;min-height:120px"> 
+    <h5 style="-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= col2.name %></h5>
+    <h6>Uploaded:<%= moment(col2.createdAt).fromNow() %></h6>
+  </div>
+ </a>
+  <% }) %>
+    </div>
+  </div>
+  </div>
+  
+    <div class="row">
+      
+    <div class="col-lg-2" style="margin-left:30px;margin-top:80px">
+      <h4>Yesterday's stock summary</h4>
+      <div>Opening price:<h4 style="display:inline" id="open"></h4></div>
+      <div>Highest Price:<h4 style="display:inline" id="high"></h4></div> 
+       <div>Low Price:<h4 style="display:inline" id="low"></h4></div>
+      <div>Closing Price:<h4 style="display:inline" id="close"></h4></div>
+    </div>
+    <div class="col-lg-6" style="margin-left:30px">
+      <h1>Stock Tracker</h1>
+    <h3 id="stockname"></h3>
+    <canvas id="chart" style="max-width:700px;max-height:700px">
+
+    </canvas>
+
+  </div>
+    <div class="col-lg-2" style="margin-right:90px;margin-top:90px">
+      <iframe width="420" height="315" id="iframe1" src="https://www.youtube.com/embed/HwUf00Qx9co?autoplay=1">
+      </iframe>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-2" style="margin-left:30px;margin-top:80px">
+      <h4>Yesterday's Bitcoin summary</h4>
+      <div>Opening price:<h4 style="display:inline" id="open1"></h4></div>
+      <div>Highest Price:<h4 style="display:inline" id="high1"></h4></div> 
+       <div>Low Price:<h4 style="display:inline" id="low1"></h4></div>
+      <div>Closing Price:<h4 style="display:inline" id="close1"></h4></div>
+    </div>
+    <div class="col-lg-6" style="margin-left:30px">
+      <h1>Bitcoin Tracker</h1>
+      <canvas id="chart2" style="max-width:700px;max-height:700px">
+
+    </canvas>
+    </div>
+    
+        <div class="col-lg-2" style="margin-right:90px;margin-top:90px">
+      <iframe width="420" height="315" id="iframe2" src="https://www.youtube.com/embed/lU4l-6EJFaE?autoplay=1">
+      </iframe>
+    </div>
+    </div>
+    
+    
+<div class="row" style="margin-top:50px">
+      <div class="col-lg-11">
+        <h1 style="text-align:center;background:#2b2b2b;color:#ffffff;max-width:300px;margin-left:30px">TECHNOLOGY</h1>
+      <a href="/show/<%= technology[0]._id %>">
+      <div class="col-lg-5 col-md-6 break " style="margin-left:30px;padding:0px;">
+        <div class="thumbnail hhh" style="padding:0px;min-height:555px">
+          <img src="<%= technology[0].image1 %>" style="margin:0px;min-height:440px;max-height:440px;min-width:100%">
+          <div class="caption"><h4 style="overflow-wrap: break-word;color:#429cf5"><%= technology[0].name %></h4>
+          <h5 style="color:#429cf5">Uploaded:<%= moment(technology[0].createdAt).from() %></h5>
+          </div>
+        </div>
+      </div>
+      </a>
+      
+      <% technology.slice(1,5).forEach(function(cc){ %>
+      <a href="/show/<%= cc._id %>">
+        <div class="col-lg-3 break" style="padding:0px;">
+        <div class="thumbnail hhh" style="padding:0px;margin:2px">
+          <img src="<%= cc.image1 %>" style="margin:0px;max-width:100%;min-width:100%;max-height:190px;min-height:190px">
+          <h4 style="overflow-wrap: break-word;-webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; overflow: hidden; text-overflow: ellipsis; white-space: normal;"><%= cc.name %></h4>
+          <h5>Uploaded:<%= moment(cc.createdAt).fromNow() %></h5>
+        </div>
+      </div>
+      </a>
+      <% }); %>
+      
+      
+      
+    </div>
+    </div>
+    
+    
+    <div class="row" style="margin-top:50px">
+      <div class="col-lg-11">
+        <h1 style="text-align:center;background:#2b2b2b;color:#ffffff;max-width:190px;margin-left:30px">HEALTH</h1>
+      <a href="/show/<%= health[0]._id %>">
+      <div class="col-lg-5 col-md-6 break " style="margin-left:30px;padding:0px;">
+        <div class="thumbnail hhh" style="padding:0px;min-height:555px">
+          <img src="<%= health[0].image1 %>" style="margin:0px;min-height:440px;max-height:440px;min-width:100%">
+          <div class="caption"><h4 style="overflow-wrap: break-word;color:#429cf5"><%= health[0].name %></h4>
+          <h5 style="color:#429cf5">Uploaded:<%= moment(health[0].createdAt).from() %></h5>
+          </div>
+        </div>
+      </div>
+      </a>
+      
+       <% business.slice(1,5).forEach(function(cc){ %>
+      <a href="/show/<%= cc._id %>">
+        <div class="col-lg-3 break" style="padding:0px;">
+        <div class="thumbnail hhh" style="padding:0px;margin:2px;">
+          <img src="<%= cc.image1 %>" style="margin:0px;max-width:100%;min-width:100%;max-height:180px;min-height:190px">
+          <h4 style="overflow-wrap: break-word;-webkit-box-orient: vertical;display: -webkit-box;-webkit-line-clamp: 2; overflow: hidden;  text-overflow: ellipsis; white-space: normal;"><%= cc.name %></h4>
+          <h5>Uploaded:<%= moment(cc.createdAt).fromNow() %></h5>
+        </div>
+      </div>
+      </a>
+      <% }); %>
+      
+    </div>
+    </div>
+    
+    
+    
+    
+    
+    
+ 
+  
+
+<script type="text/javascript">
+  $("h2").on("click",function(){
+    $(".mainNew").fadeIn(500);
+    $(".go").fadeOut(500)
+  });
+  
+   $('.go').on("scroll",function(){
+    $('.quote').fadeIn(1000);
+  });
+  
+  $(document).ready(function(){
+  $('.autoplay').slick({
+   slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  vertical:true,
+  autoplaySpeed: 1000,
+  });
+});
+
+  var arr1=["https://www.youtube.com/embed/HwUf00Qx9co?autoplay=1","https://www.youtube.com/embed/lU4l-6EJFaE?autoplay=1","https://www.youtube.com/embed/kQQZsKTszuk?autoplay=1"];
+  //var l=[];
+  getRandom1(arr1,2);
+  //console.log(l[0]);
+  
+ // document.getElementById("iframe1").src=l[0];
+  //document.getElementById("iframe2").src=l[1];
+
+  
+  async function getRandom1(arr, n) {
+    var result1 = new Array(n),
+        len = arr.length,
+        taken1 = new Array(len);
+    if (n > len)
+        throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result1[n] = arr[x in taken1 ? taken1[x] : x];
+        taken1[x] = --len in taken1 ? taken1[len] : len;
+        //console.log(result1);
+    }
+    document.getElementById("iframe2").src=result1[0];
+    document.getElementById("iframe1").src=result1[1];
+}
+
+  var val1=[];
+  var val2=[];
+  var bitcoin1=[];
+  var bitcoin2=[];
+  
+  
+  chartUp();
+  chartUp2();
+   
+   async function chartUp(){
+    // console.log("chart c1"); 
+ await getData();
+ //console.log("chart c2"); 
+  var ctx = document.getElementById('chart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels:val2,
+        datasets: [{
+            label:"Comapany stock for last month" ,
+            data:val1,
+            backgroundColor:'rgba(77, 77, 255,0.8)'
+            
+        }]
+    },
+    options: {
+        
+    }
+});
+}
+
+async function chartUp2(){
+ await getData2();
+  var ctx1 = document.getElementById('chart2').getContext('2d');
+var myChart1 = new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels:bitcoin2.reverse(),
+        datasets: [{
+            label:"Bitcoin value" ,
+            data:bitcoin1.reverse(),
+            backgroundColor:'rgba(255, 166, 77,0.8)',
+            pointBackgroundColor:'rgb(230, 115, 0)'
+            
+        }]
+    },
+    options: {
+        
+    }
+});
+}
+
+async function getData()
+{ 
+    var open,high,low,close;
+   var a=["NSE:HDFCBANK","BSE:BOSCHLTD","NSE:TITAN","BSE:MARUTI","BSE:KOTAKBANK","NSE:BRITANNIA","BSE:ASIANPAINT","BSE:DMART","BSE:DMART","BSE:TCS"]
+   var symbol=a[Math.floor(Math.random()*a.length)];
+   document.getElementById("stockname").innerHTML=symbol;
+   var response= await fetch("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol="+symbol+"&apikey=LNTXJ70F4JLJLG5W")
+   var data= await response.json();
+   all=(data['Time Series (Daily)']);
+          var enteries=Object.values(all);
+          var stockchange=enteries;
+          enteries.reverse();
+          var q=0;
+          enteries.forEach(function(en){
+              val1.push(parseFloat(en['4. close']));
+             // console.log(val1);
+          });
+          stockchange.forEach(function(m){
+            if(q===stockchange.length-1)
+            {
+              
+              document.getElementById("open").innerHTML=m['1. open'];
+              document.getElementById("high").innerHTML=m['2. high'];
+              document.getElementById("low").innerHTML=m['3. low'];
+              document.getElementById("close").innerHTML=m['4. close'];
+            }
+            q++;
+          });
+            var t=[];
+            var enteries2=Object.keys(all);
+          //console.log(enteries2.slice(0,10));
+          enteries2.reverse();
+          enteries2.forEach(function(p){
+          t= p.split("-")
+          val2.push(t[2]+"-"+t[1]);
+          });
+
+      }
+      
+  async function getData2()
+  {
+    var t1=[];
+    var p1=0;
+    var response= await fetch("https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=CNY&apikey=LNTXJ70F4JLJLG5W");
+    var data=await response.json();
+    var all1=data["Time Series (Digital Currency Daily)"];
+    var q1=Object.values(all1);
+    var stockchange1=q1;
+    q1.reverse();
+    q1.forEach(function(k)
+    {
+      bitcoin1.push(k["4b. close (USD)"]);
+    });
+    bitcoin1.reverse();
+    console.log(bitcoin1);
+     bitcoin1=bitcoin1.slice(0,20);
+    // bitcoin1.reverse();
+    var q2=Object.keys(all1);
+    q2.reverse();
+    q2.forEach(function(b){
+      t1= b.split("-")
+      bitcoin2.push(t1[2]+"-"+t1[1]);
+    });
+    bitcoin2.reverse();
+    bitcoin2=bitcoin2.slice(0,20);
+    stockchange1.forEach(function(m){
+            if(p1===stockchange1.length-1)
+            {
+              
+              document.getElementById("open1").innerHTML=m['1b. open (USD)'];
+              document.getElementById("high1").innerHTML=m['2b. high (USD)'];
+              document.getElementById("low1").innerHTML=m['3b. low (USD)'];
+              document.getElementById("close1").innerHTML=m['4b. close (USD)'];
+            }
+            p1++;
+          });
+    console.log(bitcoin1);
+  }
+
+</script>
+  
+  
+  
+<%- include('partials/footertemplate.ejs'); -%>

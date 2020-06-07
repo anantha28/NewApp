@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</link>
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+        <title>News APP</title>
+       <style>.navbar { margin-bottom: 0px;}
+       @media (max-width:400px){
+  body {
+    background-image: url('https://wallpaperaccess.com/full/326348.jpg');
+  }
+  }
+      @media (min-width: 400px) {
+       body{
+           background-image:url('https://icdn2.digitaltrends.com/image/digitaltrends/lexarphotocontestwinnder.jpg');
+           background-repeat:no-repeat;
+           background-size: cover;
+       }
+      }
+ 
+  
+       .jumbotron{
+height: 300px;
+margin-top:200px;
+margin-bottom: auto;
+width:35%;
+margin-left:30%;
+}
+.container{
+height: 100%;
+align-content: center;
+
+}
+
+
+
+       </style> 
+    </head>
+    <body>
+        
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            <a href="/" class="navbar-brand" style="color:#ffffff">NewsApp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="#">categories</a></li>
+            <li><a href="#">blogs</a></li>
+            <li><a href="#">about</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser){ %>
+            <li><a href="/login">LogIn <i class="fas fa-user"></i></a></li>
+            <li><a href="/register">SignUp <i class="fas fa-user-plus"></i></a></li>
+            <%} else{ %>
+            <li><a href="/profile"><%= currentUser.username %></a></li>
+            <li><a href="/logout">Log out</a></li>
+            <% } %>
+        </ul>
+        </div>
+    </nav>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<% if(error.length>0){%>
+<div class="alert alert-danger container" style="margin-top:40px;"><%=error%></div>
+<% }if(success.length>0){%>
+<div class="alert alert-success container" style="margin-top:40px;"><%=success%></div>
+<% } %> 
+
+
+<div class="container" style="height: 100%;
+align-content: center;">
+    
+    
+		<div class="jumbotron" style="background-color: rgba(0,0,0,0.5) !important;">
+		    <p style="padding-left:20px;color:#ffffff;display:inline;font-size:30px;">Log In</p>
+		    <div class="change" style="margin-left:3px;display:inline">
+		         <i class="fas fa-toggle-on fa-2x cc" style="color:#3498eb"></i>
+		    </div>
+		       
+
+		    <a href="/register"><button class="btn btn-danger yy" style="margin-left:20px;border-radius:20px;">SignUp</button></a>
+        <div style="width:90%;padding-left:20px;">
+    
+     <form action="/login" method="POST">
+        <div class="form-group"><input type="text" placeholder="Username" name="username" required class="form-control" style="margin-top:20px;border:none;border-bottom:1px solid rgba(0,0,0,0.5);background-color: rgba(0,0,0,0.5) !important;border-radius:20px;"></div>
+       <div class="form-group"> <input type="password" placeholder="password" name="password" required class="form-control" style="border-radius:20px;background-color: rgba(0,0,0,0.5) !important;border:none;border-bottom:1px solid rgba(0,0,0,0.5);"></div>
+        <button style="width:50%;border-radius:20px;margin-left:50px;" class="btn btn-warning xx">login</button>
+    </form>
+
+    
+    </div>
+		</div>
+	
+</div>
+
+<script type="text/javascript">
+    $(".change").on("click",".cc",function()
+    {
+        //$(this).parent().fadeToggle(500)
+        //$(".cc").remove();
+        $(".change").find('i').removeClass("fas fa-toggle-on fa-2x cc").toggleClass("fas fa-toggle-off fa-2x dd").css("color","#ffffff");
+        $(".jumbotron").css("background-color","rgba(0,0,0,0.5)");
+        $("p").css("color","#ffffff");
+        $(".yy").toggleClass("btn-danger").toggleClass("btn-primary");
+        $(".xx").toggleClass("btn-warning").toggleClass("btn-primary");
+        $("input[type=text]").css("background-color","#ffffff");
+        $("input[type=password]").css("background-color","#ffffff");
+        $("body").css("background-image","url('https://i.pinimg.com/originals/a7/e4/be/a7e4be9aa6ba57563e6b95f3654815a4.jpg')");
+        //$(this).remove()
+        
+    });
+    
+     $(".change").on("click",".dd",function()
+    {
+        //$(this).parent().fadeToggle(500)
+        //$(".cc").remove();
+        $(".change").find('i').removeClass("fas fa-toggle-off fa-2x dd").toggleClass("fas fa-toggle-on fa-2x cc").css("color","#3498eb");
+        $(".jumbotron").removeProp("background-color");
+        $(".jumbotron").css("background-color","rgba(0,0,0,0.5)");
+        $("p").css("color","#ffffff");
+        $(".xx").toggleClass("btn-warning").toggleClass("btn-primary");
+        $(".yy").toggleClass("btn-danger").toggleClass("btn-primary");
+        $("input[type=text]").css("background-color","rgba(0,0,0,0.5)");
+        $("body").css("background-image","url('https://icdn2.digitaltrends.com/image/digitaltrends/lexarphotocontestwinnder.jpg')")
+        $("input[type=password]").css("background-color","rgba(0,0,0,0.5)");
+        //$(this).remove()
+        
+    });
+    
+</script>
+<%- include('partials/footertemplate.ejs'); -%>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</link>
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <title>News APP</title>
+       <style>.navbar { margin-bottom: 0px;}
+       @media (max-width:400px){
+  body {
+    background-image: url('https://www.worldphoto.org/sites/default/files/default-media/1234157%20%C2%A9%20Nguyen%20Phuc%20%20Thanh%2C%20Viet%20Nam%2C%20entry%2C%20Open%20competition%2C%20Landscape%2C%202019%20Sony%20World%20Photography%20Awards.jpg');
+  }
+  }
+      @media (min-width: 400px) {
+       body{
+           background-image:url('https://www.worldphoto.org/sites/default/files/default-media/1234157%20%C2%A9%20Nguyen%20Phuc%20%20Thanh%2C%20Viet%20Nam%2C%20entry%2C%20Open%20competition%2C%20Landscape%2C%202019%20Sony%20World%20Photography%20Awards.jpg');
+           background-repeat:no-repeat;
+           background-size: cover;
+       }
+      }
+ 
+  
+       .jumbotron{
+height: 300px;
+margin-top:200px;
+margin-bottom: auto;
+width:35%;
+background-color: rgba(0,0,0,0.5) !important;
+margin-left:30%;
+}
+.container{
+height: 100%;
+align-content: center;
+
+}
+
+
+
+       </style> 
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            <a href="/" class="navbar-brand" style="color:#ffffff">NewsApp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="#">categories</a></li>
+            <li><a href="#">blogs</a></li>
+            <li><a href="#">about</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">LogIn <i class="fas fa-user"></i></a></li>
+            <li><a href="/register">SignUp <i class="fas fa-user-plus"></i> </a>  </li>
+        </ul>
+        </div>
+    </nav>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="css3-mediaqueries.js"></script>
+  <% if(error.length>0){%>
+<div class="alert alert-danger container" style="margin-top:40px;"><%=error%></div>
+<% }if(success.length>0){%>
+<div class="alert alert-success container" style="margin-top:40px;"><%=success%></div>
+<% } %>
+
+
+<div class="container" style="height: 100%;
+align-content: center;">
+    
+    
+		<div class="jumbotron">
+		    <p style="padding-left:20px;color:#ffffff;display:inline;font-size:30px">Sign Up</p>
+		
+        <div style="width:90%;padding-left:20px;">
+    
+     <form action="/register" method="POST">
+        <div class="form-group"><input type="text" placeholder="Username" name="username" required class="form-control" style="margin-top:20px;border:none;border-bottom:1px solid rgba(0,0,0,0.5);background-color: rgba(0,0,0,0.5) !important;border-radius:20px;"></div>
+       <div class="form-group"> <input type="password" placeholder="password" name="password" required class="form-control" style="border-radius:20px;background-color: rgba(0,0,0,0.5) !important;border:none;border-bottom:1px solid rgba(0,0,0,0.5);"></div>
+        <button style="width:50%;border-radius:20px;margin-left:50px" class="btn btn-warning 00">SignUp</button>
+        
+    </form>
+    
+    
+    </div>
+		</div>
+	
+</div>
+
+
+
+<%- include('partials/footertemplate.ejs'); -%>

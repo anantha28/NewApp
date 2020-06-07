@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</link>
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+        <title>News APP</title>
+       <style>.navbar { margin-bottom: 0px;}
+            .flip-card {
+  background-color: transparent;
+  width: 380px;
+  height: 500px;
+ 
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background: linear-gradient(to bottom, #33ccff 0%, #ffcc99 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+html,body{
+  height:100%;
+  overflow:hidden;
+}
+body{
+  background:#E1D38A;
+  background-size:cover;
+  font-family:sans-serif;
+  text-align:center;
+  padding-top:8%
+}
+
+.content {
+	
+z-index: 995;
+  box-shadow:0 3px 36px 0 rgba(0, 0, 0, 0.6);
+  display:inline-block;
+  opacity:0.7;
+  color:#666;
+  text-decoration:none;
+  transition:all 0.2s
+}
+
+.content:hover{
+  box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3);
+  padding:40px;
+  margin-top:-10px;
+  color:#444
+}
+
+
+
+       </style> 
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            <a href="/" class="navbar-brand" style="color:#ffffff">NewsApp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li><a href="#">categories</a></li>
+            <li><a href="#">blogs</a></li>
+            <li><a href="#">about</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser){ %>
+            <li><a href="/login">LogIn <i class="fas fa-user"></i></a></li>
+            <li><a href="/register">SignUp <i class="fas fa-user-plus"></i></a></li>
+            <%} else{ %>
+            <li><a href="/profilenav"><%= currentUser.username %></a></li>
+            <li><a href="/logout">Log out</a></li>
+            <% } %>
+        </ul>
+        </div>
+    </nav>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  
+  <% if(error.length>0){%>
+<div class="alert alert-danger container" style="margin-top:40px;"><%=error%></div>
+<% }if(success.length>0){%>
+<div class="alert alert-success container" style="margin-top:40px;"><%=success%></div>
+<% } %>
+
+
+<div class="content">
+
+<div style="margin-top:0px">
+<div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <% if(foundUser.gender==="male") { %>
+           <img src="https://www.pngitem.com/pimgs/m/130-1309384_man-sitting-suit-model-elegant-teacher-animation-hd.png" style="max-width:100%;">
+           <% } else{ %>
+           <img src="https://www.pngarts.com/files/3/Girl-Avatar-PNG-Photo.png" style="min-width:60%;max-height:250px;margin-top:15px">
+           <% } %>
+            <h2><b><%= foundUser.displayname %></b></h2>
+            <p style="opacity:0.8;font-size:20px"><%= foundUser.profession.toUpperCase() %></p>
+            <h3 style="font-size:28px;margin-top:10px"><%= foundUser.gender.toUpperCase() %></h3>
+            <h5 style="font-size:25px">Joined:<%= foundUser.joindate %></h5>
+            <h4 style="float:right;color:#ff1a1a;margin-right:5px"><strong>Edit Profile</strong></h4>
+        </div>
+        <div class="flip-card-back">
+            <h1 style="color:#000000">Edit Profile</h1>
+            <form action="/profilenav/update?_method=PUT" method="POST">
+                <div class="form-group" style="color:#000000;margin-top:30px">Display name<input type="text" placeholder="displayname" name="displayname" required class="form-control" style="margin-top:5px;margin-left:27px;width:80%;" value="<%= foundUser.displayname %>"></div>
+                <div class="form-group" style="color:#000000;margin-top:10px">Profession<input type="text" placeholder="profession" name="profession" required class="form-control" style="margin-top:5px;margin-left:27px;width:80%" value="<%= foundUser.profession %>"></div>
+                <div class="form-group" style="color:#000000;margin-top:10px">Gender<input type="text" placeholder="gender" name="gender" required class="form-control" style="margin-top:5px;margin-left:27px;width:80%" value="<%= foundUser.gender %>"></div>
+                <div clas="form-group" style="color:#000000;margin-top:10px">UserId<input type="text" placeholder="userId" name="userId" required class="form-control" style="margin-top:5px;margin-left:27px;width:80%" value="<%= foundUser.userId %>" readonly></div>
+                <div class="form-group" style="color:#000000;margin-top:17px;"><button class="btn btn-danger" style="width:60%">Submit</button></div>
+            </form>
+        </div>
+   </div> 
+</div>
+</div>
+
+</div>
+
+<script>
+    var rn = Math.floor((Math.random() * 150) + 60);
+var rs = Math.floor((Math.random() * 11) + 4);
+	var t = new Trianglify({
+ x_gradient: Trianglify.colorbrewer.Spectral[rs],
+    noiseIntensity: 0,
+    cellsize: rn
+});
+var pattern = t.generate(window.innerWidth, window.innerWidth+200);
+document.body.setAttribute('style', 'background-image: '+pattern.dataUrl);
+</script>
+
+
+<%- include('partials/footertemplate.ejs'); -%>

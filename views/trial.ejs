@@ -1,0 +1,16 @@
+<%- include('partials/headertemplate.ejs'); -%>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<div class="ll">
+    <h4 style="margin-top:200px">fadding elemnt</h4>
+</div>
+
+<h5 style="margin-top:250
+px">click to fade it</h5>
+<script type="text/javascript"> 
+$("h4").on("click",function(){
+    $(".ll").html("<p>new thing</p>").css("margin-top","100px")
+    $(this).fadeToggle(2000);
+});
+</script>
+<%- include('partials/footertemplate.ejs'); -%>

@@ -1,0 +1,22 @@
+<%- include('partials/headertemplate.ejs'); -%>
+
+<div class="container">
+    <div style="width:30%;margin: 100px auto;">
+        <h3>ADD NEW NEWS POST</h3>
+<form action="/newspost/new" method="POST">
+    <div clas="form-group"><input type="text" placeholder="Title" name="name" required class="form-control" style="margin-top:10px"></div>
+    <div clas="form-group"><input type="text" placeholder="description1" name="description1" required class="form-control" style="margin-top:10px"></div>
+    <div clas="form-group"><input type="text" placeholder="description2" name="description2" required class="form-control" style="margin-top:10px"></div>
+    <div clas="form-group"><input type="text" placeholder="image1 url" name="image1" required class="form-control" style="margin-top:10px"></div>
+    <div clas="form-group"><input type="text" placeholder="image2 url" name="image2" required class="form-control" style="margin-top:10px"></div>
+    <div clas="form-group"><input type="text" placeholder="post type" name="posttype" required class="form-control" style="margin-top:10px"></div>
+    <div class="form-group"><input type="text" placeholder="place in news" name="place" required class="form-control" style="margin-top:10px"></div>
+    
+    <div class="form-group"><input type="text" placeholder="sourceLink" name="sourceLink" required class="form-control" style="margin-top:10px"></div>
+    <button class="btn btn-primary" style="margin-top:10px">Submit</button>
+</form>
+</div>
+</div>
+
+
+<%- include('partials/footertemplate.ejs'); -%>

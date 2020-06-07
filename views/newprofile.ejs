@@ -1,0 +1,16 @@
+<%- include('partials/headertemplate.ejs'); -%>
+
+<div class="container">
+    <div style="width:30%;margin: 100px auto;">
+    <form action="/profile" method="POST">
+    <div class="form-group"><input type="text" placeholder="username" value="<%= requser %>" name="username" class="form-control" readonly></div>
+    <div class="form-group"><input type="text" placeholder="gender" name="gender" class="form-control"></div>
+    <div class="form-group"><input type="text" placeholder="profession" name="profession" class="form-control"></div>
+    <div class="form-group"><input type="text" placeholder="joindate" name="joindate" class="form-control" value="<%= joindate %>" readonly></div>
+    <div class="form-group"><input type="text" placeholder="display name" name="displayname" class="form-control"></div>
+    <button class="btn btn-primary form-group" style="width:100%">Submit</button>
+    </form>
+</div>
+</div>
+
+<%- include('partials/footertemplate.ejs'); -%>
